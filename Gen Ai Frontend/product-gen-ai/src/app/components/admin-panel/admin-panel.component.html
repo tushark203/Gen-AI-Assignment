@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <h3 class="mb-3 text-center">Admin Product Management</h3>
+
+  <div class="mb-3 text-end">
+    <button class="btn btn-success" (click)="addProduct()">+ Add New Product</button>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price (₹)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="products.length > 0; else noData">
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2" (click)="updateProduct(product)">Update</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <tr>
+      <td colspan="5" class="text-center">No products found.</td>
+    </tr>
+  </ng-template>
+</div>
+
